@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Amor - Para Sempre</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Playfair Display e Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0f0e13',
+                        darkCard: '#181622',
+                        wineDark: '#4a1525',
+                        wineMain: '#801530',
+                        roseAccent: '#e07a93',
+                        goldAccent: '#d4af37'
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f0e13;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f0e13;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4a1525;
+            border-radius: 4px;
+        }
+        /* Polaroid tilt effects */
+        .polaroid {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .polaroid:hover {
+            transform: translateY(-8px) rotate(0deg) scale(1.02);
+            z-index: 10;
+            box-shadow: 0 20px 25px -5px rgba(224, 122, 147, 0.2), 0 10px 10px -5px rgba(224, 122, 147, 0.1);
+        }
+        /* Glowing effects */
+        .glow-gold {
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+        .glow-rose {
+            box-shadow: 0 0 25px rgba(128, 21, 48, 0.3);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-gray-100 antialiased selection:bg-wineMain selection:text-white">
+
+    <!-- CABEÇALHO / HEADER -->
+    <header class="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-4 py-16 bg-gradient-to-b from-wineDark/40 via-darkBg to-darkBg">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-wineMain/10 via-transparent to-transparent pointer-events-none"></div>
+        
+        <div class="relative z-10 max-w-2xl mx-auto space-y-6">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-darkCard border border-wineMain/40 text-roseAccent text-xs sm:text-sm uppercase tracking-widest shadow-lg">
+                <i class="fa-solid fa-heart text-roseAccent animate-pulse"></i> Para Sempre Juntos
+            </div>
+
+            <h1 class="serif-font text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-tight">
+                Vitor <span class="text-roseAccent">&amp;</span> Alice
+            </h1>
+
+            <p class="serif-font italic text-lg sm:text-xl text-gray-300 max-w-lg mx-auto font-light">
+                "Em um mundo de incertezas, encontrar você foi a minha certeza mais bonita."
+            </p>
+
+            <div class="pt-4 flex flex-wrap justify-center gap-4">
+                <a href="#contador" class="px-6 py-3 rounded-full bg-gradient-to-r from-wineMain to-roseAccent text-white font-medium text-sm shadow-lg hover:opacity-90 transition transform active:scale-95">
+                    Ver Nosso Tempo <i class="fa-solid fa-arrow-down ml-1"></i>
+                </a>
+                <a href="#surpresa" class="px-6 py-3 rounded-full bg-darkCard border border-wineMain/60 text-goldAccent font-medium text-sm shadow-lg hover:bg-wineDark/30 transition transform active:scale-95">
+                    Cartinha Secreta <i class="fa-solid fa-envelope-open-text ml-1"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 floating text-roseAccent/60">
+            <i class="fa-solid fa-chevron-down text-xl"></i>
+        </div>
+    </header>
+
+    <!-- CONTADOR EM TEMPO REAL -->
+    <section id="contador" class="py-20 px-4 max-w-5xl mx-auto">
+        <div class="text-center space-y-3 mb-12">
+            <h2 class="serif-font text-3xl sm:text-4xl font-bold text-white">Juntos há exatos</h2>
+            <p class="text-xs sm:text-sm text-gray-400">Contando cada segundo desde <span id="data-inicio-txt" class="text-roseAccent font-semibold">08/04/2026</span></p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+            <!-- Anos -->
+            <div class="bg-darkCard border border-wineMain/30 rounded-2xl p-4 text-center shadow-xl glow-rose">
+                <span id="anos" class="serif-font text-3xl sm:text-4xl font-bold text-roseAccent block">0</span>
+                <span class="text-xs uppercase tracking-wider text-gray-400 mt-1 block">Anos</span>
+            </div>
+            <!-- Meses -->
+            <div class="bg-darkCard border border-wineMain/30 rounded-2xl p-4 text-center shadow-xl glow-rose">
+                <span id="meses" class="serif-font text-3xl sm:text-4xl font-bold text-roseAccent block">0</span>
+                <span class="text-xs uppercase tracking-wider text-gray-400 mt-1 block">Meses</span>
+            </div>
+            <!-- Dias -->
+            <div class="bg-darkCard border border-wineMain/30 rounded-2xl p-4 text-center shadow-xl glow-rose">
+                <span id="dias" class="serif-font text-3xl sm:text-4xl font-bold text-roseAccent block">0</span>
+                <span class="text-xs uppercase tracking-wider text-gray-400 mt-1 block">Dias</span>
+            </div>
+            <!-- Horas -->
+            <div class="bg-darkCard border border-wineMain/30 rounded-2xl p-4 text-center shadow-xl glow-rose">
+                <span id="horas" class="serif-font text-3xl sm:text-4xl font-bold text-goldAccent block">0</span>
+                <span class="text-xs uppercase tracking-wider text-gray-400 mt-1 block">Horas</span>
+            </div>
+            <!-- Minutos -->
+            <div class="bg-darkCard border border-wineMain/30 rounded-2xl p-4 text-center shadow-xl glow-rose">
+                <span id="minutos" class="serif-font text-3xl sm:text-4xl font-bold text-goldAccent block">0</span>
+                <span class="text-xs uppercase tracking-wider text-gray-400 mt-1 block">Minutos</span>
+            </div>
+            <!-- Segundos -->
+            <div class="bg-darkCard border border-wineMain/30 rounded-2xl p-4 text-center shadow-xl glow-rose col-span-2 sm:col-span-1">
+                <span id="segundos" class="serif-font text-3xl sm:text-4xl font-bold text-goldAccent block">0</span>
+                <span class="text-xs uppercase tracking-wider text-gray-400 mt-1 block">Segundos</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- LINHA DO TEMPO (TIMELINE) -->
+    <section class="py-20 px-4 max-w-3xl mx-auto">
+        <div class="text-center space-y-3 mb-16">
+            <h2 class="serif-font text-3xl sm:text-4xl font-bold text-white">Nossa Trajetória</h2>
+            <p class="text-sm text-gray-400">Os capítulos mais marcantes da nossa história</p>
+        </div>
+
+        <div class="relative border-l-2 border-wineMain/50 ml-4 sm:ml-auto space-y-12">
+            
+            <!-- Marco 1 -->
+            <div class="relative pl-8 group">
+                <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-wineMain border-4 border-darkBg group-hover:scale-125 transition"></div>
+                <div class="bg-darkCard border border-wineMain/30 rounded-2xl p-6 shadow-xl">
+                    <span class="text-xs font-semibold text-roseAccent tracking-wider uppercase">08 de Abril, 2026</span>
+                    <h3 class="serif-font text-xl font-bold text-white mt-1">O Nosso Primeiro Sim</h3>
+                    <p class="text-sm text-gray-300 mt-2 leading-relaxed">
+                        Foi o dia em que nossos caminhos se cruzaram de vez e agarrei essa minha dona para sempre.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Marco 2 -->
+            <div class="relative pl-8 group">
+                <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-wineMain border-4 border-darkBg group-hover:scale-125 transition"></div>
+                <div class="bg-darkCard border border-wineMain/30 rounded-2xl p-6 shadow-xl">
+                    <span class="text-xs font-semibold text-roseAccent tracking-wider uppercase">Primeiro Encontro no Complô</span>
+                    <h3 class="serif-font text-xl font-bold text-white mt-1">O Primeiro Beijo e a Primeira Flor</h3>
+                    <p class="text-sm text-gray-300 mt-2 leading-relaxed">
+                        Nesse dia eu tava nervoso, mas com a certeza absoluta de que eu queria passar mais tempo ao seu lado.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Marco 3 -->
+            <div class="relative pl-8 group">
+                <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-wineMain border-4 border-darkBg group-hover:scale-125 transition"></div>
+                <div class="bg-darkCard border border-wineMain/30 rounded-2xl p-6 shadow-xl">
+                    <span class="text-xs font-semibold text-roseAccent tracking-wider uppercase">Viagens &amp; Momentos</span>
+                    <h3 class="serif-font text-xl font-bold text-white mt-1">Nossas Pequenas Aventuras</h3>
+                    <p class="text-sm text-gray-300 mt-2 leading-relaxed">
+                        Cada passeio, filme no projetor e conversa até tarde tornaram-se memórias no meu coração.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Marco 4 -->
+            <div class="relative pl-8 group">
+                <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-goldAccent border-4 border-darkBg group-hover:scale-125 transition"></div>
+                <div class="bg-darkCard border border-goldAccent/30 rounded-2xl p-6 shadow-xl">
+                    <span class="text-xs font-semibold text-goldAccent tracking-wider uppercase">Hoje &amp; Sempre</span>
+                    <h3 class="serif-font text-xl font-bold text-white mt-1">Construindo Nosso Futuro</h3>
+                    <p class="text-sm text-gray-300 mt-2 leading-relaxed">
+                        E a cada dia, eu escolho amar você de novo, de novo e de novo e novamente.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- GALERIA POLAROID -->
+    <section class="py-20 px-4 max-w-5xl mx-auto">
+        <div class="text-center space-y-3 mb-16">
+            <h2 class="serif-font text-3xl sm:text-4xl font-bold text-white">Nossos Momentos</h2>
+            <p class="text-sm text-gray-400">Instantes eternizados em fotografias</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 pt-4">
+            
+            <!-- Polaroid 1 -->
+            <div class="polaroid bg-white text-gray-800 p-4 pb-6 rounded shadow-2xl transform rotate-1 sm:-rotate-2">
+                <div class="bg-gray-100 aspect-[4/3] overflow-hidden rounded mb-3">
+                    <img src="/img/polaroid1.jpeg" alt="Foto Casal" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/400x300/4a1525/ffffff?text=Amor'">
+                </div>
+                <p class="serif-font text-center font-medium text-gray-700 text-sm">Minha senhoritas paçoquitas ✨</p>
+            </div>
+
+            <!-- Polaroid 2 -->
+            <div class="polaroid bg-white text-gray-800 p-4 pb-6 rounded shadow-2xl transform -rotate-1 sm:rotate-2">
+                <div class="bg-gray-100 aspect-[4/3] overflow-hidden rounded mb-3">
+                    <img src="/img/polaroid2.jpeg" alt="Foto Casal" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/400x300/4a1525/ffffff?text=Momento'">
+                </div>
+                <p class="serif-font text-center font-medium text-gray-700 text-sm">Minha dona Marocas 🤍</p>
+            </div>
+
+            <!-- Polaroid 3 -->
+            <div class="polaroid bg-white text-gray-800 p-4 pb-6 rounded shadow-2xl transform rotate-2 sm:-rotate-1">
+                <div class="bg-gray-100 aspect-[4/3] overflow-hidden rounded mb-3">
+                    <img src="/img/polaroid3.jpeg" alt="Foto Casal" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/400x300/4a1525/ffffff?text=Eterno'">
+                </div>
+                <p class="serif-font text-center font-medium text-gray-700 text-sm">Mulher da minha vida 🌹</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- DECLARAÇÃO DE AMOR & SURPRESA -->
+    <section id="surpresa" class="py-20 px-4 max-w-2xl mx-auto text-center">
+        <div class="bg-darkCard border border-wineMain/40 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+            <div class="absolute -right-12 -top-12 w-32 h-32 bg-wineMain/20 rounded-full blur-2xl pointer-events-none"></div>
+            
+            <div class="w-14 h-14 mx-auto mb-6 rounded-full bg-wineDark flex items-center justify-center text-roseAccent text-2xl shadow-inner">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <h2 class="serif-font text-2xl sm:text-3xl font-bold text-white mb-4">Uma Mensagem para Você</h2>
+            <p class="text-sm sm:text-base text-gray-300 leading-relaxed mb-8">
+                Clique abaixo para abrir a sua cartinha secreta.
+            </p>
+
+            <button onclick="abrirCartinha()" class="px-8 py-4 rounded-full bg-gradient-to-r from-wineMain to-roseAccent text-white font-semibold text-sm shadow-xl hover:opacity-95 transition transform active:scale-95 inline-flex items-center gap-2">
+                <i class="fa-solid fa-envelope-open-text"></i> Abrir Cartinha Surpresa
+            </button>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="py-8 text-center text-xs text-gray-500 border-t border-gray-900">
+        <p>Feito com todo o amor do mundo para a minha namorada 💖</p>
+    </footer>
+
+    <!-- MODAL DA CARTINHA -->
+    <div id="modal-cartinha" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-darkCard border border-goldAccent/40 w-full max-w-md rounded-3xl p-6 sm:p-8 shadow-2xl relative transform scale-95 transition-transform duration-300" id="modal-content">
+            <button onclick="fecharCartinha()" class="absolute top-4 right-4 text-gray-400 hover:text-white w-8 h-8 rounded-full flex items-center justify-center bg-gray-800">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <span class="text-goldAccent text-xs uppercase tracking-widest font-semibold">Mensagem do Coração</span>
+                <h3 class="serif-font text-2xl font-bold text-white mt-1">Minha Querida Beatriz,</h3>
+            </div>
+
+            <div class="serif-font italic text-gray-300 text-sm sm:text-base leading-relaxed space-y-4 max-h-[55vh] overflow-y-auto pr-2">
+                <p>
+                    Amo você desde o dia que te conheci, minha maior certeza, minha maior felicidade. 
+                </p>
+                <p>
+                    Cada filme, batida na cama pra tirar a poeira e encheção de saco eu amo em você, cada mini pontinho.
+                </p>
+                <p>
+                    Obrigado por ser a minha namorada, companheira e melhor amiga. Eu te amo hoje, amanhã e sempre! ❤️
+                </p>
+            </div>
+
+            <div class="mt-8 text-center">
+                <button onclick="fecharCartinha()" class="px-6 py-2.5 rounded-full bg-wineMain text-white font-medium text-xs uppercase tracking-wider hover:opacity-90 transition">
+                    Guardar no Coração
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE CONTAGEM E MODAL -->
+    <script>
+        // Data de início do relacionamento (Ano, Mês [0-11], Dia, Hora, Minuto, Segundo)
+        // 08 de Abril de 2026 às 00:00:00 -> Mês 3 representa Abril
+        const dataInicio = new Date(2026, 3, 8, 0, 0, 0);
+
+        document.getElementById('data-inicio-txt').innerText = "08/04/2026";
+
+        function atualizarContador() {
+            const agora = new Date();
+            let diferenca = agora - dataInicio;
+
+            if (diferenca < 0) diferenca = 0;
+
+            const segundosTotais = Math.floor(diferenca / 1000);
+            const minutosTotais = Math.floor(segundosTotais / 60);
+            const horasTotais = Math.floor(minutosTotais / 60);
+            const diasTotais = Math.floor(horasTotais / 24);
+
+            // Cálculo aproximado de anos e meses
+            let anos = agora.getFullYear() - dataInicio.getFullYear();
+            let meses = agora.getMonth() - dataInicio.getMonth();
+            let dias = agora.getDate() - dataInicio.getDate();
+
+            if (dias < 0) {
+                meses--;
+                const ultimoMes = new Date(agora.getFullYear(), agora.getMonth(), 0);
+                dias += ultimoMes.getDate();
+            }
+
+            if (meses < 0) {
+                anos--;
+                meses += 12;
+            }
+
+            const horas = horasTotais % 24;
+            const minutos = minutosTotais % 60;
+            const segundos = segundosTotais % 60;
+
+            document.getElementById('anos').innerText = anos;
+            document.getElementById('meses').innerText = meses;
+            document.getElementById('dias').innerText = dias;
+            document.getElementById('horas').innerText = String(horas).padStart(2, '0');
+            document.getElementById('minutos').innerText = String(minutos).padStart(2, '0');
+            document.getElementById('segundos').innerText = String(segundos).padStart(2, '0');
+        }
+
+        setInterval(atualizarContador, 1000);
+        atualizarContador();
+
+        // Funções do Modal da Cartinha
+        function abrirCartinha() {
+            const modal = document.getElementById('modal-cartinha');
+            const content = document.getElementById('modal-content');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
+        }
+
+        function fecharCartinha() {
+            const modal = document.getElementById('modal-cartinha');
+            const content = document.getElementById('modal-content');
+            modal.classList.add('opacity-0');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+    </script>
+</body>
+</html>
